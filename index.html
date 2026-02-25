@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>张雷 | Zhang Lei - 个人主页</title>
+    <title>张雷 | Zhang Lei - 算法工程师</title>
     <style>
         * {
             margin: 0;
@@ -15,240 +15,401 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background: #f5f7fa;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        .card {
-            background: white;
-            border-radius: 20px;
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
             padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
         }
 
         .avatar {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 auto 30px;
+            background: white;
+            color: #1e3c72;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 60px;
+            font-size: 48px;
             font-weight: bold;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        h1 {
+        .header-info h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            color: #2d3748;
         }
 
-        .subtitle {
-            color: #718096;
+        .header-info .title {
             font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-
-        .bio {
-            color: #4a5568;
-            font-size: 1.1em;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-
-        .btn-secondary {
-            background: #f7fafc;
-            color: #4a5568;
-            border: 2px solid #e2e8f0;
-        }
-
-        .btn-secondary:hover {
-            background: #edf2f7;
-            border-color: #cbd5e0;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #667eea;
-            display: block;
-        }
-
-        .stat-label {
-            color: #718096;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-
-        .skills {
-            margin-top: 40px;
-        }
-
-        .skills h3 {
-            color: #2d3748;
+            opacity: 0.9;
             margin-bottom: 20px;
         }
 
-        .skill-tags {
+        .contact-links {
             display: flex;
-            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            color: #1e3c72;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e8ecf1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 2px;
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e8ecf1;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 35px;
+            padding-left: 25px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #2a5298;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #e8ecf1;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
             flex-wrap: wrap;
             gap: 10px;
         }
 
-        .skill-tag {
-            background: #edf2f7;
-            color: #4a5568;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            transition: all 0.3s ease;
+        .exp-company {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d3748;
         }
 
-        .skill-tag:hover {
-            background: #667eea;
+        .exp-date {
+            color: #718096;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .exp-dept {
+            color: #4a5568;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .exp-desc {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 0.95em;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffeaa7 0%, #ffeaa7 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            padding: 0 4px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Publications */
+        .pub-list {
+            list-style: none;
+        }
+
+        .pub-item {
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2a5298;
+            transition: all 0.3s;
+        }
+
+        .pub-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .pub-authors {
+            color: #4a5568;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .pub-venue {
+            color: #718096;
+            font-size: 0.85em;
+            font-style: italic;
+        }
+
+        .pub-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #1e3c72;
             color: white;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        /* Research Interests */
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .research-tag {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            border-radius: 25px;
+            color: #2d3748;
+            font-size: 0.95em;
+            font-weight: 500;
+            border: 2px solid #e8ecf1;
+            transition: all 0.3s;
+        }
+
+        .research-tag:hover {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-color: #1e3c72;
             transform: translateY(-2px);
         }
 
+        /* Footer */
         footer {
             text-align: center;
-            margin-top: 40px;
-            color: rgba(255,255,255,0.8);
+            padding: 30px;
+            color: #718096;
             font-size: 0.9em;
         }
 
-        @media (max-width: 600px) {
-            .card {
-                padding: 40px 20px;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
             }
-            
-            h1 {
+
+            .header-info h1 {
                 font-size: 2em;
             }
-            
-            .stats {
-                gap: 30px;
+
+            .exp-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .experience-item::before {
+                left: -26px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
-            <div class="avatar">ZL</div>
-            
-            <h1>张雷 <span style="font-size: 0.6em; color: #718096;">Zhang Lei</span></h1>
-            
-            <p class="subtitle">研究开发者 / 技术爱好者</p>
-            
-            <p class="bio">
-                热爱编程与技术分享，专注于 Web 开发与人工智能领域。
-                在这里记录我的学习历程、项目经验和技术思考。
-            </p>
-            
-            <div class="links">
-                <a href="https://github.com/zhangleiedu" class="btn btn-primary" target="_blank">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    GitHub
-                </a>
-                <a href="mailto:your.email@example.com" class="btn btn-secondary">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                    联系我
-                </a>
-            </div>
-            
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-number">9+</span>
-                    <span class="stat-label">年经验</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">20+</span>
-                    <span class="stat-label">项目</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">5+</span>
-                    <span class="stat-label">文章</span>
-                </div>
-            </div>
-            
-            <div class="skills">
-                <h3>技术栈</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">AI/ML</span>
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="avatar">张雷</div>
+                <div class="header-info">
+                    <h1>张雷 <span style="font-size: 0.5em; opacity: 0.8;">Zhang Lei</span></h1>
+                    <p class="title">高级算法工程师 | 多模态检索研究员</p>
+                    <div class="contact-links">
+                        <a href="https://github.com/zhangleiedu" target="_blank">GitHub</a>
+                        <a href="mailto:zhanglei@example.com">Email</a>
+                        <a href="#publications">论文列表</a>
+                    </div>
                 </div>
             </div>
         </div>
-        
+
+        <!-- Research Interests -->
+        <div class="card">
+            <h2>研究方向</h2>
+            <div class="research-tags">
+                <span class="research-tag">多模态检索</span>
+                <span class="research-tag">行人重识别 (ReID)</span>
+                <span class="research-tag">视觉语言模型 (VLM)</span>
+                <span class="research-tag">CLIP</span>
+                <span class="research-tag">VLM2Vec</span>
+                <span class="research-tag">深度学习</span>
+                <span class="research-tag">计算机视觉</span>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="card">
+            <h2>工作经历</h2>
+            <div class="timeline">
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <span class="exp-company">浙江商汤科技开发有限公司</span>
+                        <span class="exp-date">2022.04 — 至今</span>
+                    </div>
+                    <div class="exp-dept">研究开发部 · 高级研究员</div>
+                    <div class="exp-desc">
+                        负责多模态检索方向研究，包括 <span class="highlight">CLIP、VLM、VLM2Vec</span> 等前沿技术。
+                        专注于视觉语言预训练模型在检索任务中的应用与优化，推动多模态技术在实际业务中的落地。
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <span class="exp-company">浙江大华先进技术研究院</span>
+                        <span class="exp-date">2018.05 — 2022.04</span>
+                    </div>
+                    <div class="exp-dept">智能算法部 · 人体/车辆特征工程总负责人 / 以图搜图组组长（7人团队）</div>
+                    <div class="exp-desc">
+                        担任大华人体、车辆特征工程总负责人，<span class="highlight">以图搜图组组长</span>。
+                        主要负责特征效果提升、图搜方案设计与部署，作为技术带头人带领团队在多次重大项目PK和行业竞赛中获得<span class="highlight">第一名</span>的优异成绩。
+                        主导研发的以图搜图系统在多个智慧城市项目中成功落地应用。
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <span class="exp-company">浙江宇视科技有限公司</span>
+                        <span class="exp-date">2016.07 — 2018.05</span>
+                    </div>
+                    <div class="exp-dept">智能算法部 · 算法工程师</div>
+                    <div class="exp-desc">
+                        从事后端服务器智能算法中的<span class="highlight">行人检索、行人属性识别</span>的研究与开发工作。
+                        主要负责算法工程落地与指标优化，将研究成果转化为可部署的高性能产品方案。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Publications -->
+        <div class="card" id="publications">
+            <h2>代表论文</h2>            
+            <div style="margin-top: 20px; padding: 15px; background: #f0f4f8; border-radius: 8px; color: #4a5568; font-size: 0.9em; text-align: center;">
+                💡 提示：具体看链接 https://scholar.google.com/citations?user=icTGm1IAAAAJ&hl=zh-CN
+            </div>
+        </div>
+
+        <!-- Skills Summary -->
+        <div class="card">
+            <h2>核心技能</h2>
+            <div class="research-tags">
+                <span class="research-tag">PyTorch / TensorFlow</span>
+                <span class="research-tag">大规模检索系统</span>
+                <span class="research-tag">模型优化与部署</span>
+                <span class="research-tag">分布式训练</span>
+                <span class="research-tag">算法工程化</span>
+                <span class="research-tag">团队技术管理</span>
+            </div>
+        </div>
+
         <footer>
-            <p>© 2025 张雷 | Built with ❤️ on GitHub Pages</p>
+            <p>© 2025 张雷 | 算法工程师 · 杭州</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">最后更新：2025年2月</p>
         </footer>
     </div>
 </body>
