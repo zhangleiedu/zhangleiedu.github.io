@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>张雷 | Zhang Lei - 算法工程师</title>
+    <title>张雷 | Zhang Lei - 高级算法工程师</title>
     <style>
         * {
             margin: 0;
@@ -40,6 +40,19 @@
             gap: 40px;
         }
 
+        /* 头像图片样式 - 新增 */
+        .avatar-img {
+            width: 120px;
+            height: 150px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 4px solid white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            background: white;
+        }
+
+        /* 保留原有 avatar 类作为备用 */
         .avatar {
             width: 120px;
             height: 120px;
@@ -415,6 +428,11 @@
                 font-size: 2em;
             }
 
+            .avatar-img {
+                width: 100px;
+                height: 125px;
+            }
+
             .exp-header {
                 flex-direction: column;
                 gap: 5px;
@@ -450,7 +468,9 @@
         <!-- Header -->
         <div class="header">
             <div class="header-content">
-                <div class="avatar">张雷</div>
+                <!-- 修改这里：使用照片替换文字头像 -->
+                <img src="profile.png" alt="张雷" class="avatar-img">
+                
                 <div class="header-info">
                     <h1>张雷 <span style="font-size: 0.5em; opacity: 0.8;">Zhang Lei</span></h1>
                     <p class="title">高级算法工程师 | 多模态检索研究员</p>
@@ -473,6 +493,7 @@
                 <span class="research-tag">视觉语言模型 (VLM)</span>
                 <span class="research-tag">CLIP</span>
                 <span class="research-tag">VLM2Vec</span>
+                <span class="research-tag">图像处理</span>
                 <span class="research-tag">深度学习</span>
                 <span class="research-tag">计算机视觉</span>
             </div>
@@ -487,7 +508,7 @@
                         <span class="exp-company">浙江商汤科技开发有限公司</span>
                         <span class="exp-date">2022.04 — 至今</span>
                     </div>
-                    <div class="exp-dept">研究开发部 · 高级算法工程师</div>
+                    <div class="exp-dept">研究开发部 · 高级研究员</div>
                     <div class="exp-desc">
                         负责多模态检索方向研究，包括 CLIP、VLM、VLM2Vec 等前沿技术。
                         专注于视觉语言预训练模型在检索任务中的应用与优化，推动多模态技术在实际业务中的落地。
@@ -499,7 +520,7 @@
                         <span class="exp-company">浙江大华先进技术研究院</span>
                         <span class="exp-date">2018.05 — 2022.04</span>
                     </div>
-                    <div class="exp-dept">智能算法部 · 人体/车辆特征工程总负责人 / 以图搜图组组长</div>
+                    <div class="exp-dept">智能算法部 · 人体/车辆特征工程总负责人 / 以图搜图组组长（7人团队）</div>
                     <div class="exp-desc">
                         担任大华人体、车辆特征工程总负责人，以图搜图组组长（7人团队）。
                         主要负责特征效果提升、图搜方案设计与部署，作为技术带头人带领团队在多次重大项目PK和行业竞赛中获得第一名的优异成绩。
@@ -621,7 +642,7 @@
             <ul class="pub-list">
                 <li class="pub-item">
                     <div class="pub-title">
-                        https://scholar.google.com/citations?user=icTGm1IAAAAJ&hl=zh-CN
+                        论文链接：https://scholar.google.com/citations?user=icTGm1IAAAAJ&hl=zh-CN
                     </div>
                 </li>
         </div>
@@ -641,7 +662,7 @@
         </div>
 
         <footer>
-            <p>© 2025 张雷 | 算法工程师 · 杭州</p>
+            <p>© 2025 张雷 | 高级算法工程师 · 杭州</p>
             <p style="margin-top: 10px; font-size: 0.85em;">最后更新：2025年2月</p>
         </footer>
     </div>
