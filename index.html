@@ -199,6 +199,98 @@
             color: #2d3748;
         }
 
+        /* Competitions */
+        .competition-list {
+            list-style: none;
+        }
+
+        .competition-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff9f0 0%, #fff5e6 100%);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #f6ad55;
+            transition: all 0.3s;
+        }
+
+        .competition-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(246, 173, 85, 0.15);
+        }
+
+        .competition-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .competition-content {
+            flex: 1;
+        }
+
+        .competition-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+            line-height: 1.4;
+        }
+
+        .competition-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .competition-rank {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
+            background: #c53030;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .competition-rank.first {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+            color: #744210;
+        }
+
+        .competition-rank.second {
+            background: linear-gradient(135deg, #c0c0c0 0%, #a0a0a0 100%);
+            color: #2d3748;
+        }
+
+        .competition-year {
+            color: #718096;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .competition-location {
+            color: #4a5568;
+            font-size: 0.9em;
+        }
+
+        .competition-location::before {
+            content: '📍';
+            margin-right: 4px;
+        }
+
         /* Publications */
         .pub-list {
             list-style: none;
@@ -273,6 +365,37 @@
             transform: translateY(-2px);
         }
 
+        /* Stats Summary */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #4a5568;
+            margin-top: 8px;
+            font-size: 0.95em;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -308,6 +431,17 @@
             .experience-item::before {
                 left: -26px;
             }
+
+            .competition-item {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .competition-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
         }
     </style>
 </head>
@@ -324,6 +458,7 @@
                         <a href="https://github.com/zhangleiedu" target="_blank">GitHub</a>
                         <a href="mailto:zhanglei@example.com">Email</a>
                         <a href="#publications">论文列表</a>
+                        <a href="#competitions">竞赛获奖</a>
                     </div>
                 </div>
             </div>
@@ -354,7 +489,7 @@
                     </div>
                     <div class="exp-dept">研究开发部 · 高级研究员</div>
                     <div class="exp-desc">
-                        负责多模态检索方向研究，包括 <span class="highlight">CLIP、VLM、VLM2Vec</span> 等前沿技术。
+                        负责多模态检索方向研究，包括 CLIP、VLM、VLM2Vec 等前沿技术。
                         专注于视觉语言预训练模型在检索任务中的应用与优化，推动多模态技术在实际业务中的落地。
                     </div>
                 </div>
@@ -364,10 +499,10 @@
                         <span class="exp-company">浙江大华先进技术研究院</span>
                         <span class="exp-date">2018.05 — 2022.04</span>
                     </div>
-                    <div class="exp-dept">智能算法部 · 人体/车辆特征工程总负责人 / 以图搜图组组长（7人团队）</div>
+                    <div class="exp-dept">智能算法部 · 人体/车辆特征工程总负责人 / 以图搜图组组长</div>
                     <div class="exp-desc">
-                        担任大华人体、车辆特征工程总负责人，<span class="highlight">以图搜图组组长</span>。
-                        主要负责特征效果提升、图搜方案设计与部署，作为技术带头人带领团队在多次重大项目PK和行业竞赛中获得<span class="highlight">第一名</span>的优异成绩。
+                        担任大华人体、车辆特征工程总负责人，以图搜图组组长（7人团队）。
+                        主要负责特征效果提升、图搜方案设计与部署，作为技术带头人带领团队在多次重大项目PK和行业竞赛中获得第一名的优异成绩。
                         主导研发的以图搜图系统在多个智慧城市项目中成功落地应用。
                     </div>
                 </div>
@@ -379,19 +514,116 @@
                     </div>
                     <div class="exp-dept">智能算法部 · 算法工程师</div>
                     <div class="exp-desc">
-                        从事后端服务器智能算法中的<span class="highlight">行人检索、行人属性识别</span>的研究与开发工作。
+                        从事后端服务器智能算法中的行人检索、行人属性识别的研究与开发工作。
                         主要负责算法工程落地与指标优化，将研究成果转化为可部署的高性能产品方案。
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Competitions -->
+        <div class="card" id="competitions">
+            <h2>竞赛获奖</h2>
+            
+            <div class="stats-grid" style="margin-bottom: 25px;">
+                <div class="stat-box">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">国家级竞赛获奖</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">年数据集记录保持</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">第一名</div>
+                </div>
+            </div>
+
+            <ul class="competition-list">
+                <li class="competition-item">
+                    <div class="competition-icon">🏆</div>
+                    <div class="competition-content">
+                        <div class="competition-title">Market1501 / DukeMTMC-reID / CUHK03 三大公开数据集连续三年刷新记录</div>
+                        <div class="competition-meta">
+                            <span class="competition-rank first">🥇 世界纪录</span>
+                            <span class="competition-year">2018 - 2020</span>
+                            <span class="competition-location">国际基准数据集</span>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="competition-item">
+                    <div class="competition-icon">🏆</div>
+                    <div class="competition-content">
+                        <div class="competition-title">PRCV2018 大规模行人检索竞赛</div>
+                        <div class="competition-meta">
+                            <span class="competition-rank first">🥇 双项第一</span>
+                            <span class="competition-year">2018年</span>
+                            <span class="competition-location">广州</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            图片检索赛道第一名 + 系统测试赛道第一名
+                        </div>
+                    </div>
+                </li>
+
+                <li class="competition-item">
+                    <div class="competition-icon">🏆</div>
+                    <div class="competition-content">
+                        <div class="competition-title">全国人工智能大赛 · 行人重识别赛项</div>
+                        <div class="competition-meta">
+                            <span class="competition-rank first">🥇 初赛第一 · 复赛第一</span>
+                            <span class="competition-year">2019年</span>
+                            <span class="competition-location">深圳</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            决赛优胜奖 | 鹏城实验室主办，国家级A类赛事
+                        </div>
+                    </div>
+                </li>
+
+                <li class="competition-item">
+                    <div class="competition-icon">🥈</div>
+                    <div class="competition-content">
+                        <div class="competition-title">公安部交通管理科学研究所 · 车辆图像特征人工智能识别算法竞赛</div>
+                        <div class="competition-meta">
+                            <span class="competition-rank second">🥈 第二名</span>
+                            <span class="competition-year">2019年</span>
+                            <span class="competition-location">无锡</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            公安部交科所主办，车辆重识别权威赛事
+                        </div>
+                    </div>
+                </li>
+
+                <li class="competition-item">
+                    <div class="competition-icon">🏆</div>
+                    <div class="competition-content">
+                        <div class="competition-title">复杂环境地面目标检测识别技术挑战赛 · 远距离行人身份识别</div>
+                        <div class="competition-meta">
+                            <span class="competition-rank first">🥇 第一名</span>
+                            <span class="competition-year">2020年</span>
+                            <span class="competition-location">北京</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            复杂场景下的远距离行人重识别技术挑战
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
         <!-- Publications -->
         <div class="card" id="publications">
-            <h2>代表论文</h2>            
-            <div style="margin-top: 20px; padding: 15px; background: #f0f4f8; border-radius: 8px; color: #4a5568; font-size: 0.9em; text-align: center;">
-                💡 提示：具体看链接 https://scholar.google.com/citations?user=icTGm1IAAAAJ&hl=zh-CN
-            </div>
+            <h2>代表论文</h2>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div class="pub-title">
+                        https://scholar.google.com/citations?user=icTGm1IAAAAJ&hl=zh-CN
+                    </div>
+                </li>
         </div>
 
         <!-- Skills Summary -->
@@ -404,6 +636,7 @@
                 <span class="research-tag">分布式训练</span>
                 <span class="research-tag">算法工程化</span>
                 <span class="research-tag">团队技术管理</span>
+                <span class="research-tag">竞赛方案设计</span>
             </div>
         </div>
 
