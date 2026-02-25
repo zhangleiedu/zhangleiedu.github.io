@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lei Zhang | Senior Algorithm Engineer - Multi-modal Retrieval</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+        }
+
+        .lang-switch a {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .lang-switch a:hover {
+            color: #2a5298;
+            transform: translateY(-2px);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .avatar-img {
+            width: 120px;
+            height: 150px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 4px solid white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            background: white;
+        }
+
+        .header-info h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header-info .title {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            color: #1e3c72;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e8ecf1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 2px;
+        }
+
+        /* Summary */
+        .summary {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e8ecf1;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 35px;
+            padding-left: 25px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #2a5298;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #e8ecf1;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .exp-company {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .exp-date {
+            color: #718096;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .exp-dept {
+            color: #4a5568;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .exp-desc {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 0.95em;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffeaa7 0%, #ffeaa7 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            padding: 0 4px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Competitions */
+        .competition-list {
+            list-style: none;
+        }
+
+        .competition-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff9f0 0%, #fff5e6 100%);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #f6ad55;
+            transition: all 0.3s;
+        }
+
+        .competition-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(246, 173, 85, 0.15);
+        }
+
+        .competition-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .competition-content {
+            flex: 1;
+        }
+
+        .competition-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+            line-height: 1.4;
+        }
+
+        .competition-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .competition-rank {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
+            background: #c53030;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .competition-rank.first {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+            color: #744210;
+        }
+
+        .competition-rank.second {
+            background: linear-gradient(135deg, #c0c0c0 0%, #a0a0a0 100%);
+            color: #2d3748;
+        }
+
+        .competition-year {
+            color: #718096;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .competition-location {
+            color: #4a5568;
+            font-size: 0.9em;
+        }
+
+        /* Publications */
+        .pub-list {
+            list-style: none;
+        }
+
+        .pub-item {
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2a5298;
+            transition: all 0.3s;
+        }
+
+        .pub-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .pub-authors {
+            color: #4a5568;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .pub-venue {
+            color: #718096;
+            font-size: 0.85em;
+            font-style: italic;
+        }
+
+        .pub-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #1e3c72;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        /* Research Interests */
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .research-tag {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            border-radius: 25px;
+            color: #2d3748;
+            font-size: 0.95em;
+            font-weight: 500;
+            border: 2px solid #e8ecf1;
+            transition: all 0.3s;
+        }
+
+        .research-tag:hover {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-color: #1e3c72;
+            transform: translateY(-2px);
+        }
+
+        /* Stats Summary */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #4a5568;
+            margin-top: 8px;
+            font-size: 0.95em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .lang-switch {
+                top: 10px;
+                right: 10px;
+                padding: 8px 15px;
+                font-size: 0.85em;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-info h1 {
+                font-size: 2em;
+            }
+
+            .avatar-img {
+                width: 100px;
+                height: 125px;
+            }
+
+            .exp-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .experience-item::before {
+                left: -26px;
+            }
+
+            .competition-item {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .competition-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <a href="https://zhangleiedu.github.io/index-zh.html" title="切换到中文版">
+            <span>🇨🇳</span>
+            <span>中文</span>
+        </a>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <img src="profile.png" alt="Lei Zhang" class="avatar-img">
+                
+                <div class="header-info">
+                    <h1>Lei Zhang</h1>
+                    <p class="title">Senior Algorithm Engineer | Multi-modal Retrieval Researcher</p>
+                    <div class="contact-links">
+                        <a href="https://github.com/zhangleiedu" target="_blank">GitHub</a>
+                        <a href="mailto:zhanglei_edu@foxmail.com">Email</a>
+                        <a href="#publications">Publications</a>
+                        <a href="#competitions">Awards</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="card">
+            <h2>Professional Summary</h2>
+            <p class="summary">
+                Experienced algorithm engineer with <strong>8+ years</strong> of expertise in computer vision and multi-modal retrieval. 
+                Specialized in <span class="highlight">Person Re-Identification (ReID)</span>, 
+                <span class="highlight">Vision-Language Models (VLM)</span>, and large-scale image retrieval systems. 
+                Proven track record of leading technical teams to achieve <strong>world-record performance</strong> on international benchmarks 
+                and winning multiple <strong>1st place awards</strong> in national AI competitions. 
+                Currently focusing on cutting-edge research in CLIP, VLM2Vec, and multi-modal representation learning at SenseTime.
+            </p>
+        </div>
+
+        <!-- Research Interests -->
+        <div class="card">
+            <h2>Research Interests</h2>
+            <div class="research-tags">
+                <span class="research-tag">Multi-modal Retrieval</span>
+                <span class="research-tag">Person Re-Identification</span>
+                <span class="research-tag">Vision-Language Models (VLM)</span>
+                <span class="research-tag">CLIP</span>
+                <span class="research-tag">VLM2Vec</span>
+                <span class="research-tag">Image-to-Image Search</span>
+                <span class="research-tag">Deep Metric Learning</span>
+                <span class="research-tag">Computer Vision</span>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="card">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <span class="exp-company">SenseTime Research</span>
+                        <span class="exp-date">Apr 2022 – Present</span>
+                    </div>
+                    <div class="exp-dept">R&D Department | Senior Researcher</div>
+                    <div class="exp-desc">
+                        Leading research in <span class="highlight">multi-modal retrieval</span>, including CLIP, Vision-Language Models (VLM), 
+                        and VLM2Vec. Focus on applying vision-language pre-trained models to retrieval tasks and optimizing 
+                        multi-modal technologies for real-world applications. Driving innovation in cross-modal embedding learning 
+                        and large-scale retrieval systems.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <span class="exp-company">Dahua Technology - Advanced Technology Research Institute</span>
+                        <span class="exp-date">May 2018 – Apr 2022</span>
+                    </div>
+                    <div class="exp-dept">AI Algorithm Department | Technical Lead (7-person team)</div>
+                    <div class="exp-desc">
+                        Served as <span class="highlight">Head of Human/Vehicle Feature Engineering</span> and 
+                        <span class="highlight">Leader of Image-to-Image Search Team</span> (7 engineers). 
+                        Responsible for feature performance optimization, retrieval system design and deployment. 
+                        Led the team to achieve <span class="highlight">1st place</span> in multiple major project competitions 
+                        and national AI challenges. Successfully deployed image search systems in various smart city projects.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <span class="exp-company">Uniview Technology</span>
+                        <span class="exp-date">Jul 2016 – May 2018</span>
+                    </div>
+                    <div class="exp-dept">Intelligent Algorithm Department | Algorithm Engineer</div>
+                    <div class="exp-desc">
+                        Conducted R&D on backend server intelligence algorithms, focusing on 
+                        <span class="highlight">person retrieval</span> and <span class="highlight">person attribute recognition</span>. 
+                        Responsible for algorithm engineering deployment and performance optimization, 
+                        transforming research outcomes into deployable high-performance production solutions.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitions -->
+        <div class="card" id="competitions">
+            <h2>Competitions & Awards</h2>
+            
+            <div class="stats-grid" style="margin-bottom: 25px;">
+                <div class="stat-box">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">National Competition Awards</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Years World Record Holder</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">First Place Wins</div>
+                </div>
+            </div>
+
+            <ul class="competition-list">
+                <li class="competition-item">
+                    <div class="competition-icon">🏆</div>
+                    <div class="competition-content">
+                        <div class="competition-title">
+                            Market1501 / DukeMTMC-reID / CUHK03 - Three Major Benchmark Datasets
+                        </div>
+                        <div class="competition-meta">
+                            <span class="competition-rank first">🥇 World Record</span>
+                            <span class="competition-year">2018 - 2020</span>
+                            <span class="competition-location">International Benchmarks</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            Broke world records for three consecutive years on all three major person Re-ID benchmarks
+                        </div>
+                    </div>
+                </li>
+
+                <li class="competition-item">
+                    <div class="competition-icon">🏆</div>
+                    <div class="competition-content">
+                        <div class="competition-title">
+                            PRCV 2018 Large-Scale Person Retrieval Challenge
+                        </div>
+                        <div class="competition-meta">
+                            <span class="competition-rank first">🥇 Dual 1st Place</span>
+                            <span class="competition-year">2018</span>
+                            <span class="competition-location">Guangzhou, China</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            1st Place in both Image Retrieval Track and System Performance Track
+                        </div>
+                    </div>
+                </li>
+
+                <li class="competition-item">
+                    <div class="competition-icon">🏆</div>
+                    <div class="competition-content">
+                        <div class="competition-title">
+                            National Artificial Intelligence Competition - Person Re-ID Track
+                        </div>
+                        <div class="competition-meta">
+                            <span class="competition-rank first">🥇 1st in Preliminary & Semi-final</span>
+                            <span class="competition-year">2019</span>
+                            <span class="competition-location">Shenzhen, China</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            Organized by Peng Cheng Laboratory | National Class-A Competition | Final Excellence Award
+                        </div>
+                    </div>
+                </li>
+
+                <li class="competition-item">
+                    <div class="competition-icon">🥈</div>
+                    <div class="competition-content">
+                        <div class="competition-title">
+                            Ministry of Public Security - Vehicle Image Recognition AI Algorithm Competition
+                        </div>
+                        <div class="competition-meta">
+                            <span class="competition-rank second">🥈 2nd Place</span>
+                            <span class="competition-year">2019</span>
+                            <span class="competition-location">Wuxi, China</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            Organized by Traffic Management Research Institute of MPS | Authoritative vehicle Re-ID competition
+                        </div>
+                    </div>
+                </li>
+
+                <li class="competition-item">
+                    <div class="competition-icon">🏆</div>
+                    <div class="competition-content">
+                        <div class="competition-title">
+                            Complex Environment Ground Target Detection Challenge - Long-Range Person Identification
+                        </div>
+                        <div class="competition-meta">
+                            <span class="competition-rank first">🥇 1st Place</span>
+                            <span class="competition-year">2020</span>
+                            <span class="competition-location">Beijing, China</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            Challenging long-range person re-identification in complex scenarios
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Publications -->
+        <div class="card" id="publications">
+            <h2>Selected Publications</h2>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div class="pub-title">
+                        Paper Link: https://scholar.google.com/citations?user=icTGm1IAAAAJ&hl=zh-CN
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Skills -->
+        <div class="card">
+            <h2>Technical Skills</h2>
+            <div class="research-tags">
+                <span class="research-tag">PyTorch / TensorFlow</span>
+                <span class="research-tag">Large-Scale Retrieval Systems</span>
+                <span class="research-tag">Model Optimization & Deployment</span>
+                <span class="research-tag">Distributed Training</span>
+                <span class="research-tag">Algorithm Engineering</span>
+                <span class="research-tag">Technical Team Leadership</span>
+                <span class="research-tag">Competition Solution Design</span>
+                <span class="research-tag">Python / C++</span>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="card">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="experience-item" style="margin-bottom: 0;">
+                    <div class="exp-header">
+                        <span class="exp-company">Master's Degree in Computer Science</span>
+                        <span class="exp-date">2013 – 2016</span>
+                    </div>
+                    <div class="exp-dept">[University Name] | [City, China]</div>
+                    <div class="exp-desc">
+                        Research focus: Computer Vision and Pattern Recognition
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #f0f4f8; border-radius: 8px; color: #4a5568; font-size: 0.9em; text-align: center;">
+                💡 Please replace with your actual education background
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Lei Zhang | Senior Algorithm Engineer · Hangzhou, China</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">
+                <a href="https://zhangleiedu.github.io" style="color: #2a5298; text-decoration: none;">查看中文版简历 (View Chinese Version)</a>
+            </p>
+            <p style="margin-top: 5px; font-size: 0.8em; color: #a0aec0;">Last Updated: February 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
