@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>张雷 | Zhang Lei - 算法工程师</title>
+    <title>张雷 | 高级算法工程师 - 多模态检索</title>
     <style>
         * {
             margin: 0;
@@ -24,6 +24,34 @@
             padding: 40px 20px;
         }
 
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+        }
+
+        .lang-switch a {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .lang-switch a:hover {
+            color: #2a5298;
+            transform: translateY(-2px);
+        }
+
         /* Header Section */
         .header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -32,6 +60,7 @@
             border-radius: 20px;
             margin-bottom: 30px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-top: 20px;
         }
 
         .header-content {
@@ -40,7 +69,6 @@
             gap: 40px;
         }
 
-        /* 头像图片样式 - 新增 */
         .avatar-img {
             width: 120px;
             height: 150px;
@@ -50,22 +78,6 @@
             flex-shrink: 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             background: white;
-        }
-
-        /* 保留原有 avatar 类作为备用 */
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: white;
-            color: #1e3c72;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            flex-shrink: 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
         .header-info h1 {
@@ -127,6 +139,13 @@
             height: 24px;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             border-radius: 2px;
+        }
+
+        /* Summary */
+        .summary {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #4a5568;
         }
 
         /* Experience */
@@ -299,11 +318,6 @@
             font-size: 0.9em;
         }
 
-        .competition-location::before {
-            content: '📍';
-            margin-right: 4px;
-        }
-
         /* Publications */
         .pub-list {
             list-style: none;
@@ -419,6 +433,13 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .lang-switch {
+                top: 10px;
+                right: 10px;
+                padding: 8px 15px;
+                font-size: 0.85em;
+            }
+
             .header-content {
                 flex-direction: column;
                 text-align: center;
@@ -464,24 +485,44 @@
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <a href="https://zhangleiedu.github.io/" title="Switch to English Version">
+            <span>🇺🇸</span>
+            <span>English</span>
+        </a>
+    </div>
+
     <div class="container">
         <!-- Header -->
         <div class="header">
             <div class="header-content">
-                <!-- 修改这里：使用照片替换文字头像 -->
                 <img src="profile.png" alt="张雷" class="avatar-img">
                 
                 <div class="header-info">
-                    <h1>张雷 <span style="font-size: 0.5em; opacity: 0.8;">Zhang Lei</span></h1>
+                    <h1>张雷</h1>
                     <p class="title">高级算法工程师 | 多模态检索研究员</p>
                     <div class="contact-links">
                         <a href="https://github.com/zhangleiedu" target="_blank">GitHub</a>
-                        <a href="mailto:zhanglei_edu@foxmail.com">Email</a>
-                        <a href="#publications">论文列表</a>
-                        <a href="#competitions">竞赛获奖</a>
+                        <a href="mailto:zhanglei_eud@foxmail.com">邮箱</a>
+                        <a href="#publications">论文</a>
+                        <a href="#competitions">获奖</a>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="card">
+            <h2>专业总结</h2>
+            <p class="summary">
+                拥有<strong>8年以上</strong>计算机视觉和多模态检索经验的资深算法工程师。
+                专注于<span class="highlight">行人重识别（ReID）</span>、
+                <span class="highlight">视觉语言模型（VLM）</span>和大规模图像检索系统。
+                拥有带领技术团队在<strong>国际基准测试</strong>上创造世界纪录、
+                并在全国人工智能竞赛中多次获得<strong>第一名</strong>的优异战绩。
+                目前在商汤科技从事CLIP、VLM2Vec和多模态表示学习等前沿研究。
+            </p>
         </div>
 
         <!-- Research Interests -->
@@ -489,12 +530,12 @@
             <h2>研究方向</h2>
             <div class="research-tags">
                 <span class="research-tag">多模态检索</span>
-                <span class="research-tag">行人重识别 (ReID)</span>
-                <span class="research-tag">视觉语言模型 (VLM)</span>
+                <span class="research-tag">行人重识别</span>
+                <span class="research-tag">视觉语言模型（VLM）</span>
                 <span class="research-tag">CLIP</span>
                 <span class="research-tag">VLM2Vec</span>
                 <span class="research-tag">以图搜图</span>
-                <span class="research-tag">深度学习</span>
+                <span class="research-tag">深度度量学习</span>
                 <span class="research-tag">计算机视觉</span>
             </div>
         </div>
@@ -505,38 +546,42 @@
             <div class="timeline">
                 <div class="experience-item">
                     <div class="exp-header">
-                        <span class="exp-company">浙江商汤科技开发有限公司</span>
-                        <span class="exp-date">2022.04 — 至今</span>
+                        <span class="exp-company">商汤科技研究院</span>
+                        <span class="exp-date">2022年4月 – 至今</span>
                     </div>
-                    <div class="exp-dept">研究开发部 · 高级研究员</div>
+                    <div class="exp-dept">研发部 | 高级研究员</div>
                     <div class="exp-desc">
-                        负责多模态检索方向研究，包括 <span class="highlight">CLIP、VLM、VLM2Vec</span> 等前沿技术。
-                        专注于视觉语言预训练模型在检索任务中的应用与优化，推动多模态技术在实际业务中的落地。
+                        主导<span class="highlight">多模态检索</span>方向研究，包括CLIP、视觉语言模型（VLM）和VLM2Vec。
+                        专注于将视觉语言预训练模型应用于检索任务，优化多模态技术在实际业务中的落地。
+                        推动跨模态嵌入学习和大规模检索系统的创新。
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="exp-header">
-                        <span class="exp-company">浙江大华先进技术研究院</span>
-                        <span class="exp-date">2018.05 — 2022.04</span>
+                        <span class="exp-company">大华股份先进技术研究院</span>
+                        <span class="exp-date">2018年5月 – 2022年4月</span>
                     </div>
-                    <div class="exp-dept">智能算法部 · 人体/车辆特征工程总负责人 / 以图搜图组组长（7人团队）</div>
+                    <div class="exp-dept">智能算法部 | 技术负责人（7人团队）</div>
                     <div class="exp-desc">
-                        担任大华人体、车辆特征工程总负责人，<span class="highlight">以图搜图组组长</span>（7人团队）。
-                        主要负责特征效果提升、图搜方案设计与部署，作为技术带头人带领团队在多次重大项目PK和行业竞赛中获得<span class="highlight">第一名</span>的优异成绩。
-                        主导研发的以图搜图系统在多个智慧城市项目中成功落地应用。
+                        担任<span class="highlight">人体/车辆特征工程总负责人</span>及
+                        <span class="highlight">以图搜图团队负责人</span>（7名工程师）。
+                        负责特征性能优化、检索系统设计与部署。
+                        带领团队在多个重大项目竞赛和全国AI挑战赛中获得<span class="highlight">第一名</span>。
+                        成功将图像检索系统部署于多个智慧城市项目。
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="exp-header">
-                        <span class="exp-company">浙江宇视科技有限公司</span>
-                        <span class="exp-date">2016.07 — 2018.05</span>
+                        <span class="exp-company">宇视科技</span>
+                        <span class="exp-date">2016年7月 – 2018年5月</span>
                     </div>
-                    <div class="exp-dept">智能算法部 · 算法工程师</div>
+                    <div class="exp-dept">智能算法部 | 算法工程师</div>
                     <div class="exp-desc">
-                        从事后端服务器智能算法中的<span class="highlight">行人检索、行人属性识别</span>的研究与开发工作。
-                        主要负责算法工程落地与指标优化，将研究成果转化为可部署的高性能产品方案。
+                        从事后端服务器智能算法研发，专注于
+                        <span class="highlight">行人检索</span>和<span class="highlight">行人属性识别</span>。
+                        负责算法工程部署与性能优化，将研究成果转化为可部署的高性能生产方案。
                     </div>
                 </div>
             </div>
@@ -553,7 +598,7 @@
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">3</div>
-                    <div class="stat-label">年数据集记录保持</div>
+                    <div class="stat-label">年世界纪录保持</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">4</div>
@@ -565,11 +610,16 @@
                 <li class="competition-item">
                     <div class="competition-icon">🏆</div>
                     <div class="competition-content">
-                        <div class="competition-title">Market1501 / DukeMTMC-reID / CUHK03 三大公开数据集连续三年刷新记录</div>
+                        <div class="competition-title">
+                            Market1501 / DukeMTMC-reID / CUHK03 三大基准数据集
+                        </div>
                         <div class="competition-meta">
                             <span class="competition-rank first">🥇 世界纪录</span>
                             <span class="competition-year">2018 - 2020</span>
-                            <span class="competition-location">国际基准数据集</span>
+                            <span class="competition-location">国际基准测试</span>
+                        </div>
+                        <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
+                            连续三年在三大行人重识别基准测试上打破世界纪录
                         </div>
                     </div>
                 </li>
@@ -577,14 +627,16 @@
                 <li class="competition-item">
                     <div class="competition-icon">🏆</div>
                     <div class="competition-content">
-                        <div class="competition-title">PRCV2018 大规模行人检索竞赛</div>
+                        <div class="competition-title">
+                            PRCV 2018 大规模行人检索挑战赛
+                        </div>
                         <div class="competition-meta">
                             <span class="competition-rank first">🥇 双项第一</span>
-                            <span class="competition-year">2018年</span>
-                            <span class="competition-location">广州</span>
+                            <span class="competition-year">2018</span>
+                            <span class="competition-location">中国广州</span>
                         </div>
                         <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
-                            图片检索赛道第一名 + 系统测试赛道第一名
+                            图像检索赛道第一名 + 系统性能赛道第一名
                         </div>
                     </div>
                 </li>
@@ -592,14 +644,16 @@
                 <li class="competition-item">
                     <div class="competition-icon">🏆</div>
                     <div class="competition-content">
-                        <div class="competition-title">全国人工智能大赛 · 行人重识别赛项</div>
+                        <div class="competition-title">
+                            全国人工智能大赛 - 行人重识别赛道
+                        </div>
                         <div class="competition-meta">
                             <span class="competition-rank first">🥇 初赛第一 · 复赛第一</span>
-                            <span class="competition-year">2019年</span>
-                            <span class="competition-location">深圳</span>
+                            <span class="competition-year">2019</span>
+                            <span class="competition-location">中国深圳</span>
                         </div>
                         <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
-                            决赛优胜奖 | 鹏城实验室主办，国家级A类赛事
+                            鹏城实验室主办 | 国家级A类竞赛 | 决赛优胜奖
                         </div>
                     </div>
                 </li>
@@ -607,14 +661,16 @@
                 <li class="competition-item">
                     <div class="competition-icon">🥈</div>
                     <div class="competition-content">
-                        <div class="competition-title">公安部交通管理科学研究所 · 车辆图像特征人工智能识别算法竞赛</div>
+                        <div class="competition-title">
+                            公安部交通管理科学研究所 - 车辆图像识别AI算法竞赛
+                        </div>
                         <div class="competition-meta">
                             <span class="competition-rank second">🥈 第二名</span>
-                            <span class="competition-year">2019年</span>
-                            <span class="competition-location">无锡</span>
+                            <span class="competition-year">2019</span>
+                            <span class="competition-location">中国无锡</span>
                         </div>
                         <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
-                            公安部交科所主办，车辆重识别权威赛事
+                            公安部交科所主办 | 车辆重识别权威赛事
                         </div>
                     </div>
                 </li>
@@ -622,11 +678,13 @@
                 <li class="competition-item">
                     <div class="competition-icon">🏆</div>
                     <div class="competition-content">
-                        <div class="competition-title">复杂环境地面目标检测识别技术挑战赛 · 远距离行人身份识别</div>
+                        <div class="competition-title">
+                            复杂环境地面目标检测识别技术挑战赛 - 远距离行人身份识别
+                        </div>
                         <div class="competition-meta">
                             <span class="competition-rank first">🥇 第一名</span>
-                            <span class="competition-year">2020年</span>
-                            <span class="competition-location">北京</span>
+                            <span class="competition-year">2020</span>
+                            <span class="competition-location">中国北京</span>
                         </div>
                         <div style="margin-top: 8px; color: #4a5568; font-size: 0.9em;">
                             复杂场景下的远距离行人重识别技术挑战
@@ -636,7 +694,7 @@
             </ul>
         </div>
 
-        <!-- Publications -->
+        <!-- Publications
         <div class="card" id="publications">
             <h2>代表论文</h2>
             <ul class="pub-list">
@@ -646,10 +704,10 @@
                         <span class="pub-badge">CVPR 2024</span>
                     </div>
                     <div class="pub-authors">
-                        <strong>Lei Zhang</strong>, et al.
+                        <strong>Lei Zhang</strong>, 等
                     </div>
                     <div class="pub-venue">
-                        IEEE/CVF Conference on Computer Vision and Pattern Recognition
+                        IEEE/CVF 计算机视觉与模式识别会议
                     </div>
                 </li>
 
@@ -659,10 +717,10 @@
                         <span class="pub-badge">ICCV 2023</span>
                     </div>
                     <div class="pub-authors">
-                        <strong>Lei Zhang</strong>, et al.
+                        <strong>Lei Zhang</strong>, 等
                     </div>
                     <div class="pub-venue">
-                        IEEE/CVF International Conference on Computer Vision
+                        IEEE/CVF 国际计算机视觉会议
                     </div>
                 </li>
 
@@ -672,10 +730,10 @@
                         <span class="pub-badge">ECCV 2022</span>
                     </div>
                     <div class="pub-authors">
-                        <strong>Lei Zhang</strong>, et al.
+                        <strong>Lei Zhang</strong>, 等
                     </div>
                     <div class="pub-venue">
-                        European Conference on Computer Vision
+                        欧洲计算机视觉会议
                     </div>
                 </li>
 
@@ -685,10 +743,10 @@
                         <span class="pub-badge">TIP 2021</span>
                     </div>
                     <div class="pub-authors">
-                        <strong>Lei Zhang</strong>, et al.
+                        <strong>Lei Zhang</strong>, 等
                     </div>
                     <div class="pub-venue">
-                        IEEE Transactions on Image Processing
+                        IEEE 图像处理汇刊
                     </div>
                 </li>
 
@@ -698,32 +756,68 @@
                         <span class="pub-badge">PR 2020</span>
                     </div>
                     <div class="pub-authors">
-                        <strong>Lei Zhang</strong>, et al.
+                        <strong>Lei Zhang</strong>, 等
                     </div>
                     <div class="pub-venue">
-                        Pattern Recognition
+                        模式识别
                     </div>
                 </li>
             </ul>
         </div>
+         -->
+        <div class="card" id="publications">
+           <h2>论文</h2>
+           <ul class="pub-list">
+               <li class="pub-item">
+                   <div class="pub-title">
+                       论文链接: https://scholar.google.com/citations?user=icTGm1IAAAAJ&hl=zh-CN
+                   </div>
+                </li>
+            </ul>
+        </div>
 
-        <!-- Skills Summary -->
+        <!-- Skills -->
         <div class="card">
-            <h2>核心技能</h2>
+            <h2>技术技能</h2>
             <div class="research-tags">
                 <span class="research-tag">PyTorch / TensorFlow</span>
                 <span class="research-tag">大规模检索系统</span>
                 <span class="research-tag">模型优化与部署</span>
                 <span class="research-tag">分布式训练</span>
                 <span class="research-tag">算法工程化</span>
-                <span class="research-tag">团队技术管理</span>
+                <span class="research-tag">技术团队管理</span>
                 <span class="research-tag">竞赛方案设计</span>
+                <span class="research-tag">Python / C++</span>
             </div>
         </div>
 
+        <!-- Education
+        <div class="card">
+            <h2>教育背景</h2>
+            <div class="timeline">
+                <div class="experience-item" style="margin-bottom: 0;">
+                    <div class="exp-header">
+                        <span class="exp-company">计算机科学硕士学位</span>
+                        <span class="exp-date">2013 – 2016</span>
+                    </div>
+                    <div class="exp-dept">[大学名称] | [城市, 中国]</div>
+                    <div class="exp-desc">
+                        研究方向：计算机视觉与模式识别
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #f0f4f8; border-radius: 8px; color: #4a5568; font-size: 0.9em; text-align: center;">
+                💡 请替换为您的实际教育背景
+            </div>
+        </div>
+         -->
+
         <footer>
-            <p>© 2025 张雷 | 算法工程师 · 杭州</p>
-            <p style="margin-top: 10px; font-size: 0.85em;">最后更新：2025年2月</p>
+            <p>© 2025 张雷 | 高级算法工程师 · 中国杭州</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">
+                <a href="https://zhangleiedu.github.io/" style="color: #2a5298; text-decoration: none;">View English Version (查看英文版)</a>
+            </p>
+            <p style="margin-top: 5px; font-size: 0.8em; color: #a0aec0;">最后更新：2025年2月</p>
         </footer>
     </div>
 </body>
